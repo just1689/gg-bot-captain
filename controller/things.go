@@ -20,7 +20,7 @@ func handleDynamicThings(b []byte) {
 
 func pushThingsAsync(things []model.Thing) {
 	go func(things []model.Thing) {
-		for thing := range things {
+		for _, thing := range things {
 			mem.Push(model.TableNameThing, thing)
 		}
 	}(things)

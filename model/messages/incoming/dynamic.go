@@ -14,8 +14,6 @@ type MessageShareDynamicThings struct {
 }
 
 func BuildMessageShareDynamicThingsFromString(b []byte) (item MessageShareDynamicThings, err error) {
-
-	log.Infoln(fmt.Sprintf(string(b)))
 	r := bytes.NewReader(b)
 	decoder := json.NewDecoder(r)
 	err = decoder.Decode(&item)

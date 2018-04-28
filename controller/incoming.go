@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/Jeffail/gabs"
 	"github.com/just1689/gg-bot-captain/model/messages"
@@ -37,20 +35,8 @@ func HandleIncoming(b []byte) {
 			return
 		}
 
-		log.Infoln(fmt.Sprintf("Received: %s", string(b)))
+		log.Infoln(fmt.Sprintf("Received: %s", con))
 
 	}(b)
 
-}
-
-func getConversation(b []byte) (string, error) {
-	r := bytes.NewReader(b)
-	decoder := json.NewDecoder(r)
-	var message messages.Message
-	err := decoder.Decode(&message)
-	if err != nil {
-		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
-		log.Errorln(fmt.Sprintf("...: %s", err))
-	}
-	return message.Conversation, err
 }
