@@ -16,7 +16,6 @@ type Tag struct {
 	Tag uint `json:"tag" bson:"tag"`
 }
 
-
 //BuildTagFromString builds from bytes
 func BuildTagFromString(msg []byte) (Tag, error) {
 	r := bytes.NewReader(msg)
