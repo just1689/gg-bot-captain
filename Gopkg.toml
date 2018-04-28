@@ -15,6 +15,10 @@
   branch = "master"
   name = "vbom.ml/util"
 
+[[constraint]]
+  branch = "master"
+  name = "github.com/Jeffail/gabs"
+
 [prune]
   go-tests = true
   unused-packages = true

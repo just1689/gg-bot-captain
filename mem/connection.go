@@ -60,6 +60,7 @@ func Push(table string, obj interface{}) error {
 	defer txn.Abort()
 	if err := txn.Insert(table, obj); err != nil {
 		log.Errorln(fmt.Sprintf("Error pushing to mem: %s", err))
+		log.Errorln(fmt.Sprintf("Error pushing to mem: %s", err.Error()))
 		defer txn.Abort()
 		return err
 	}

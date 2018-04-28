@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/Jeffail/gabs"
 	"github.com/just1689/gg-bot-captain/model/messages"
 	log "github.com/sirupsen/logrus"
 )
@@ -11,7 +12,11 @@ import (
 func HandleIncoming(b []byte) {
 
 	go func(b []byte) {
-		con, err := getConversation(b)
+
+		jsonParsed, err := gabs.ParseJSON(b)
+
+		con, _ := jsonParsed.Path("conversation").Data().(string)
+
 		if err != nil {
 			return
 		}
@@ -23,6 +28,12 @@ func HandleIncoming(b []byte) {
 			return
 		} else if con == messages.ConversationShareDynamicThings {
 			handleDynamicThings(b)
+			return
+		} else if con == "S_SHARE_HEALTH" {
+			//Ignore
+			return
+		} else if con == "S_CHANGE_VIEW" {
+			//Ignore
 			return
 		}
 
@@ -39,6 +50,7 @@ func getConversation(b []byte) (string, error) {
 	err := decoder.Decode(&message)
 	if err != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
+		log.Errorln(fmt.Sprintf("...: %s", err))
 	}
 	return message.Conversation, err
 }
