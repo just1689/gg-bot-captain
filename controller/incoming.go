@@ -34,20 +34,16 @@ func HandleIncoming(b []byte) {
 func routeMessage(con string, b []byte) {
 	if con == messages.ConversationShareTag {
 		handleMyTagMessage(b)
-		return
 	} else if con == messages.ConversationListOfGames {
 		handleListOfGames(b)
-		return
 	} else if con == messages.ConversationShareDynamicThings {
 		handleDynamicThings(b)
-		return
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
-		return
 	} else if messages.InConversationsToIgnore(con) {
 		//Ignore
-		return
+	} else {
+		log.Infoln(fmt.Sprintf("Received: %s", con))
 	}
 
-	log.Infoln(fmt.Sprintf("Received: %s", con))
 }
