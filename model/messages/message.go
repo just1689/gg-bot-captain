@@ -12,6 +12,7 @@ const ConversationShareDynamicThings = "S_SHARE_DYNAMIC_THINGS"
 //ConversationShareMap is a message from server
 const ConversationShareMap = "S_SHARE_MAP"
 
+//ConversationsToIgnore is a list of conversations I don't need to worry about
 var ConversationsToIgnore = [...]string{
 	"S_SHARE_HEALTH",
 	"S_CHANGE_VIEW",
@@ -23,6 +24,7 @@ var ConversationsToIgnore = [...]string{
 	"S_ORB_N",
 	"S_PLAYER_LEFT"}
 
+//InConversationsToIgnore checks is a conversation is uninteresting
 func InConversationsToIgnore(s string) bool {
 	for _, b := range ConversationsToIgnore {
 		if b == s {
