@@ -20,6 +20,10 @@ func HandleIncoming(b []byte) {
 			return
 		} else if con == messages.ConversationListOfGames {
 			handleListOfGames(b)
+			return
+		} else if con == messages.ConversationShareDynamicThings {
+
+			return
 		}
 
 		log.Infoln(fmt.Sprintf("Received: %s", string(b)))
