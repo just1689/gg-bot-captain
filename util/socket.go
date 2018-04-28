@@ -35,5 +35,9 @@ func sendItemImp(item interface{}, verbose bool) {
 //SendMessage adds a message to the channel
 func SendMessage(item interface{}) {
 	sendItemImp(item, false)
+}
 
+//GetSocket returns the socket connection pointer
+func GetSocket() *websocket.Conn {
+	return con
 }
