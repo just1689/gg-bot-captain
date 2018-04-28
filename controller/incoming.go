@@ -41,7 +41,7 @@ func routeMessage(con string, b []byte) {
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
 	} else if messages.InConversationsToIgnore(con) {
-		//Ignore
+		log.Debugln(fmt.Sprintf("Ignoring message about: %s", con))
 	} else {
 		log.Infoln(fmt.Sprintf("Received: %s", con))
 	}
