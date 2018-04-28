@@ -26,6 +26,16 @@ var (
 					},
 				},
 			},
+			"Tile": {
+				Name: "Tile",
+				Indexes: map[string]*memdb.IndexSchema{
+					"id": {
+						Name:    "id",
+						Unique:  true,
+						Indexer: &memdb.UintFieldIndex{Field: "ID"},
+					},
+				},
+			},
 		},
 	}
 )

@@ -14,7 +14,7 @@ import (
 	"github.com/just1689/gg-bot-captain/util"
 )
 
-var addr = flag.String("addr", "team142.co.za:80", "http service address")
+var addr = flag.String("addr", "192.168.88.238:80", "http service address")
 
 func main() {
 
