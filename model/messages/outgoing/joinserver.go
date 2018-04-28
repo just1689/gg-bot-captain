@@ -1,4 +1,4 @@
-package model
+package outgoing
 
 //MessageRequestJoinServer tells the server about the client
 type MessageRequestJoinServer struct {

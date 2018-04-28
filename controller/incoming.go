@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/just1689/gg-bot-captain/model"
 	log "github.com/sirupsen/logrus"
+	"github.com/just1689/gg-bot-captain/model/messages"
 )
 
 func HandleIncoming(b []byte) {
@@ -15,9 +15,11 @@ func HandleIncoming(b []byte) {
 		if err != nil {
 			return
 		}
-		if con == model.ConversationShareTag {
+		if con == messages.ConversationShareTag {
 			handleMyTagMessage(b)
 			return
+		} else if con == messages.ConversationListOfGames {
+			handleListOfGames(b)
 		}
 
 		log.Infoln(fmt.Sprintf("Received: %s", string(b)))
@@ -29,7 +31,7 @@ func HandleIncoming(b []byte) {
 func getConversation(b []byte) (string, error) {
 	r := bytes.NewReader(b)
 	decoder := json.NewDecoder(r)
-	var message model.Message
+	var message messages.Message
 	err := decoder.Decode(&message)
 	if err != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))

@@ -1,11 +1,11 @@
 package controller
 
 import (
-	"github.com/just1689/gg-bot-captain/model"
 	"github.com/just1689/gg-bot-captain/util"
+	"github.com/just1689/gg-bot-captain/model/messages/outgoing"
 )
 
 func SendMessageJoinServer() {
-	item := model.BuildMessageRequestJoinServer("Captain")
+	item := outgoing.BuildMessageRequestJoinServer("Captain")
 	util.SendMessage(item)
 }

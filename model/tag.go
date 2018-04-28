@@ -11,8 +11,6 @@ import (
 //TableNameTag is the name of the tag table
 const TableNameTag = "Tag"
 
-//ConversationShareTag is the tag name
-const ConversationShareTag = "S_SHARE_TAG"
 
 type Tag struct {
 	Tag uint `json:"tag" bson:"tag"`
