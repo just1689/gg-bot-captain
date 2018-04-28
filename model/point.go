@@ -1,5 +1,6 @@
 package model
 
+//Point is a place that has a rotation and radius
 type Point struct {
 	X        string  `json:"x" bson:"x"`
 	Y        string  `json:"y" bson:"y"`

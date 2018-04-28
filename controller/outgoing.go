@@ -5,7 +5,8 @@ import (
 	"github.com/just1689/gg-bot-captain/util"
 )
 
+//SendMessageJoinServer tells the server about the bot
 func SendMessageJoinServer() {
-	item := outgoing.BuildMessageRequestJoinServer("Captain")
+	item := outgoing.BuildMessageRequestJoinServer("Botty McBotface")
 	util.SendMessage(item)
 }

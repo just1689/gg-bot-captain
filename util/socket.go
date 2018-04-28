@@ -10,6 +10,7 @@ import (
 var con *websocket.Conn
 var cha chan interface{}
 
+//AssignSocketConn assigns the connection pointer
 func AssignSocketConn(co *websocket.Conn) {
 	con = co
 }
@@ -33,12 +34,6 @@ func sendItemImp(item interface{}, verbose bool) {
 
 //SendMessage adds a message to the channel
 func SendMessage(item interface{}) {
-	sendItemImp(item, false)
-
-}
-
-//SendMessageText adds a message to the channel
-func SendMessageText(item string) {
 	sendItemImp(item, false)
 
 }

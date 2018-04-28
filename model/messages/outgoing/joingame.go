@@ -1,5 +1,6 @@
 package outgoing
 
+//MessageJoinGame is sent to the server to join a game
 type MessageJoinGame struct {
 	Conversation string `json:"conversation" bson:"conversation"`
 	ID           string `json:"id" bson:"id"`

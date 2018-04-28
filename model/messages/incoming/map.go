@@ -14,6 +14,7 @@ type MessageShareMap struct {
 	Z   int          `json:"z" bson:"z"`
 }
 
+//BuildMessageMapFromString builds a message from bytes
 func BuildMessageMapFromString(b []byte) (item MessageShareMap, err error) {
 	r := bytes.NewReader(b)
 	decoder := json.NewDecoder(r)

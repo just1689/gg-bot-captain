@@ -8,10 +8,12 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+//MessageListOfGames is an object from the server
 type MessageListOfGames struct {
 	Games []model.Game `json:"games" bson:"games"`
 }
 
+//BuildListOfGamesFromString creates the object from bytes
 func BuildListOfGamesFromString(msg []byte) (MessageListOfGames, error) {
 	r := bytes.NewReader(msg)
 	decoder := json.NewDecoder(r)

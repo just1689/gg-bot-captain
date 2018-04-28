@@ -8,6 +8,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+//HandleIncoming handles incoming messages
 func HandleIncoming(b []byte) {
 
 	go func(b []byte) {

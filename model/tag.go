@@ -11,10 +11,13 @@ import (
 //TableNameTag is the name of the tag table
 const TableNameTag = "Tag"
 
+//Tag holds the player info
 type Tag struct {
 	Tag uint `json:"tag" bson:"tag"`
 }
 
+
+//BuildTagFromString builds from bytes
 func BuildTagFromString(msg []byte) (Tag, error) {
 	r := bytes.NewReader(msg)
 	decoder := json.NewDecoder(r)

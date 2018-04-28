@@ -8,11 +8,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+//MessageShareDynamicThings is a wrapper for things
 type MessageShareDynamicThings struct {
 	Conversation string        `json:"conversation" bson:"conversation"`
 	Things       []model.Thing `json:"things" bson:"things"`
 }
 
+//BuildMessageShareDynamicThingsFromString creates an object from bytes
 func BuildMessageShareDynamicThingsFromString(b []byte) (item MessageShareDynamicThings, err error) {
 	r := bytes.NewReader(b)
 	decoder := json.NewDecoder(r)

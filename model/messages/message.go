@@ -11,7 +11,3 @@ const ConversationShareDynamicThings = "S_SHARE_DYNAMIC_THINGS"
 
 //ConversationShareMap is a message from server
 const ConversationShareMap = "S_SHARE_MAP"
-
-type Message struct {
-	Conversation string `json:"conversation"`
-}
