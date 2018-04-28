@@ -8,6 +8,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+//MessageShareMap describes a map
 type MessageShareMap struct {
 	Map []model.Tile `json:"model" bson:"model"`
 	X   int          `json:"x" bson:"x"`
