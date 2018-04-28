@@ -1,33 +1,38 @@
 package controller
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"github.com/just1689/gg-bot-captain/model"
+	log "github.com/sirupsen/logrus"
 )
 
-func HandleIncoming(v string) {
-	go func(v string) {
-		con, err := getConverstation(v)
+func HandleIncoming(b []byte) {
+
+	go func(b []byte) {
+		con, err := getConversation(b)
 		if err != nil {
 			return
 		}
-		if con == ConversationShareTag {
-			tag, errorBuild := model.BuildTagFromString(v)
-			if errorBuild != nil {
-				return
-			}
-			handleMyTag(tag)
+		if con == model.ConversationShareTag {
+			handleMyTagMessage(b)
+			return
 		}
-	}(v)
+
+		log.Infoln(fmt.Sprintf("Received: %s", string(b)))
+
+	}(b)
+
 }
 
-func getConverstation(v string) (string, error) {
-	decoder := json.NewDecoder(v)
+func getConversation(b []byte) (string, error) {
+	r := bytes.NewReader(b)
+	decoder := json.NewDecoder(r)
 	var message model.Message
 	err := decoder.Decode(&message)
 	if err != nil {
-		fmt.Errorf("There was a problem decoding the post message: %s", err.Error())
+		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
 	}
 	return message.Conversation, err
 }

@@ -10,11 +10,16 @@ import (
 
 	"github.com/gorilla/websocket"
 	"github.com/just1689/gg-bot-captain/controller"
+	"github.com/just1689/gg-bot-captain/mem"
+	"github.com/just1689/gg-bot-captain/util"
 )
 
 var addr = flag.String("addr", "team142.co.za:80", "http service address")
 
 func main() {
+
+	mem.Init()
+
 	flag.Parse()
 	log.SetFlags(0)
 
@@ -28,6 +33,10 @@ func main() {
 	if err != nil {
 		log.Fatal("dial:", err)
 	}
+
+	//Ensures the websocket is usable
+	util.AssignSocketConn(c)
+
 	defer c.Close()
 
 	done := make(chan struct{})
@@ -40,8 +49,7 @@ func main() {
 				log.Println("read:", err)
 				return
 			}
-			controller.HandleIncoming(string(message))
-			log.Printf("recv: %s", message)
+			controller.HandleIncoming(message)
 		}
 	}()
 
