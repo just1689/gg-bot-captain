@@ -13,6 +13,11 @@ func HandleIncoming(b []byte) {
 
 	go func(b []byte) {
 
+		if string(b) == "0" {
+			util.SendMessage("1")
+			return
+		}
+
 		jsonParsed, err := gabs.ParseJSON(b)
 		if err != nil {
 			log.Errorln(fmt.Sprintf("Error: %e", err))
@@ -39,36 +44,8 @@ func routeMessage(con string, b []byte) {
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
 		return
-	} else if con == "S_SHARE_HEALTH" {
+	} else if messages.InConversationsToIgnore(con) {
 		//Ignore
-		return
-	} else if con == "S_CHANGE_VIEW" {
-		//Ignore
-		return
-	} else if con == "S_SCOREBOARD" {
-		//Ignore
-		return
-	} else if con == "S_P_LEVEL" {
-		//Ignore
-		return
-	} else if con == "S_PLAY_SOUND" {
-		//Ignore
-		return
-	} else if con == "S_SHARE_BULLETS" {
-		//Ignore
-		return
-	} else if con == "S_SHARE_SPRAY" {
-		//Ignore
-		return
-	} else if con == "S_ORB_N" {
-		//Ignore
-		return
-	} else if con == "S_PLAYER_LEFT" {
-		//Ignore
-		return
-
-	} else if con == "" && string(b) == "0" {
-		util.SendMessage("1")
 		return
 	}
 
