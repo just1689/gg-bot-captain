@@ -11,7 +11,6 @@ import (
 //TableNameTag is the name of the tag table
 const TableNameTag = "Tag"
 
-
 type Tag struct {
 	Tag uint `json:"tag" bson:"tag"`
 }

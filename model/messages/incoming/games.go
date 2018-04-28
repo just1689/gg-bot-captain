@@ -4,10 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"github.com/just1689/gg-bot-captain/model"
+	log "github.com/sirupsen/logrus"
 )
-
 
 type MessageListOfGames struct {
 	Games []model.Game `json:"games" bson:"games"`

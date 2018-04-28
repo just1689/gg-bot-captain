@@ -2,8 +2,8 @@ package controller
 
 import (
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"github.com/just1689/gg-bot-captain/model/messages/incoming"
+	log "github.com/sirupsen/logrus"
 )
 
 func handleListOfGames(b []byte) {
