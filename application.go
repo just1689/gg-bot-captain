@@ -19,16 +19,12 @@ var addr = flag.String("addr", "192.168.88.238:80", "http service address")
 func main() {
 
 	mem.Init()
-
 	flag.Parse()
 	log.SetFlags(0)
-
 	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt)
-
 	u := url.URL{Scheme: "ws", Host: *addr, Path: "/websocket"}
 	log.Printf("connecting to %s", u.String())
-
 	c, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
 	if err != nil {
 		log.Fatal("dial:", err)
@@ -36,11 +32,13 @@ func main() {
 
 	//Ensures the websocket is usable
 	util.AssignSocketConn(c)
-
 	defer c.Close()
-
 	done := make(chan struct{})
+	setupHandler(done, c)
+	setupSystemInterrupt(done, interrupt, c)
+}
 
+func setupHandler(done chan struct{}, c *websocket.Conn) {
 	go func() {
 		defer close(done)
 		for {
@@ -52,7 +50,9 @@ func main() {
 			controller.HandleIncoming(message)
 		}
 	}()
+}
 
+func setupSystemInterrupt(done chan struct{}, interrupt chan os.Signal, c *websocket.Conn) {
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 
