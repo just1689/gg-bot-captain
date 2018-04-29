@@ -41,6 +41,15 @@ func GetAllByFieldAndValue(name string, field string, value string) (memdb.Resul
 
 }
 
+//GetAllByFieldAndUintValue gets rows in a table with a where clause for an index
+func GetAllByFieldAndUintValue(name string, field string, value uint) (memdb.ResultIterator, error) {
+	txn := getTransaction(false)
+	defer txn.Abort()
+	raw, err := txn.Get(name, field, value)
+	return raw, err
+
+}
+
 //GetAll retrieves a whole table
 func GetAll(name string) (memdb.ResultIterator, error) {
 	txn := getTransaction(false)
