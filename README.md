@@ -15,7 +15,7 @@ See: https://github.com/team142/gg
 ## Planning & progress
 <a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/trello.png" height="80"></a>
 
-<a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/scope.png" width="500"></a>
+<a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/scope.png" width="800"></a>
 
 
 ## Community (Dev, Q&A & suggestions)
