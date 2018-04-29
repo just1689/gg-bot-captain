@@ -4,6 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/6337f6fcf9837f809721/maintainability)](https://codeclimate.com/github/just1689/gg-bot-captain/maintainability)
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/just1689/gg-bot-captain/pulls.svg?style=flat)](https://github.com/team142/gg/pulls)
 [![Github Issues](http://githubbadges.herokuapp.com/just1689/gg-bot-captain/issues.svg?style=flat)](https://github.com/team142/gg/issues)
+[![GoDoc](https://godoc.org/github.com/just1689/gg-bot-captain?status.svg)](http://godoc.org/github.com/just1689/gg-bot-captain)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 
 
