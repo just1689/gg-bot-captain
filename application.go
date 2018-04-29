@@ -15,26 +15,17 @@ import (
 )
 
 var addr = flag.String("addr", "192.168.88.238:80", "http service address")
-var interrupt chan os.Signal
-var done chan struct{}
 
 func main() {
 
-	setup()
-	setupSocket()
-	setupInterupt()
-}
-
-func setup() {
 	mem.Init()
+
 	flag.Parse()
 	log.SetFlags(0)
-	interrupt = make(chan os.Signal, 1)
+
+	interrupt := make(chan os.Signal, 1)
 	signal.Notify(interrupt, os.Interrupt)
 
-}
-
-func setupSocket() {
 	u := url.URL{Scheme: "ws", Host: *addr, Path: "/websocket"}
 	log.Printf("connecting to %s", u.String())
 
@@ -62,9 +53,6 @@ func setupSocket() {
 		}
 	}()
 
-}
-
-func setupInterupt() {
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 
@@ -73,7 +61,7 @@ func setupInterupt() {
 		case <-done:
 			return
 		case t := <-ticker.C:
-			err := util.GetSocket().WriteMessage(websocket.TextMessage, []byte(t.String()))
+			err := c.WriteMessage(websocket.TextMessage, []byte(t.String()))
 			if err != nil {
 				log.Println("write:", err)
 				return
@@ -83,7 +71,7 @@ func setupInterupt() {
 
 			// Cleanly close the connection by sending a close message and then
 			// waiting (with timeout) for the server to close the connection.
-			err := util.GetSocket().WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
+			err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
 			if err != nil {
 				log.Println("write close:", err)
 				return

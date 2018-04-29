@@ -1,10 +1,9 @@
 package model
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"github.com/hashicorp/go-memdb"
+	"github.com/just1689/gg-bot-captain/util"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -17,12 +16,8 @@ type Tag struct {
 }
 
 //BuildTagFromString builds from bytes
-func BuildTagFromString(msg []byte) (Tag, error) {
-	r := bytes.NewReader(msg)
-	decoder := json.NewDecoder(r)
-	var item Tag
-	err := decoder.Decode(&item)
-	if err != nil {
+func BuildTagFromString(b []byte) (item Tag, err error) {
+	if err = util.Decode(b, item); err != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
 	}
 	return item, err
