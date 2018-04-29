@@ -13,10 +13,15 @@
 The goal of this project is to build a bot for GG - the game with no name.
 See: https://github.com/team142/gg
 
+
+## Road map
+<a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/scope.png" width="800"></a>
+
+
+
 ## Planning & progress
 <a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/trello.png" height="80"></a>
 
-<a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/scope.png" width="800"></a>
 
 
 ## Community (Dev, Q&A & suggestions)
