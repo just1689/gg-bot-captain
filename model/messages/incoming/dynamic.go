@@ -15,7 +15,7 @@ type MessageShareDynamicThings struct {
 
 //BuildMessageShareDynamicThingsFromString creates an object from bytes
 func BuildMessageShareDynamicThingsFromString(b []byte) (item MessageShareDynamicThings, err error) {
-	if err = util.Decode(b, item); err != nil {
+	if err = util.BytesToDecoder(b).Decode(&item); err != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
 	}
 	return item, err

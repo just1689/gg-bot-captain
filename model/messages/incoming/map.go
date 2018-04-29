@@ -16,7 +16,7 @@ type MessageShareMap struct {
 
 //BuildMessageMapFromString builds a message from bytes
 func BuildMessageMapFromString(b []byte) (item MessageShareMap, err error) {
-	if err = util.Decode(b, item); err != nil {
+	if err = util.BytesToDecoder(b).Decode(&item); err != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
 	}
 	return item, err
