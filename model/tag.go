@@ -26,13 +26,10 @@ func BuildTagFromString(b []byte) (item Tag, err error) {
 
 //IteratorToManyTags gets a list of tags
 func IteratorToManyTags(iterator memdb.ResultIterator, err error) (items []Tag) {
-	if err != nil {
-		log.Error(err.Error())
-		return nil
-	}
-	if iterator == nil {
+	if IteratorInvalid(iterator, err) {
 		return items
 	}
+
 	more := true
 	for more {
 		next := iterator.Next()
