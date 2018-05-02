@@ -36,8 +36,8 @@ func main() {
 	defer c.Close()
 	done := make(chan struct{})
 	setupHandler(done, c)
-	setupSystemInterrupt(done, interrupt, c)
 	setupAI()
+	setupSystemInterrupt(done, interrupt, c)
 }
 
 func setupHandler(done chan struct{}, c *websocket.Conn) {
@@ -89,6 +89,7 @@ func setupSystemInterrupt(done chan struct{}, interrupt chan os.Signal, c *webso
 
 func setupAI() {
 	go func() {
+		log.Println("Starting AI...:")
 		time.Sleep(5 * time.Second)
 		ai.Schedule()
 	}()

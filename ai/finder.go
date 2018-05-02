@@ -7,19 +7,19 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//PickTarget for now picks the first thing that is not me
-func PickTarget() (model.Thing, bool) {
+func pickTarget() (model.Thing, bool) {
 	myTag := controller.GetMyTag()
 	log.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 
 	things := controller.GetAllThings()
-	log.Infoln(fmt.Sprintf("Found things: %v", len(things)))
+	log.Debugln(fmt.Sprintf("Found things: %v", len(things)))
 	for _, thing := range things {
 		if thing.Tag == myTag {
 			continue
 		}
+		log.Infoln(fmt.Sprintf("Found a thing to target"))
 		return thing, true
 	}
 	log.Infoln(fmt.Sprintf("Could not find target: %v", len(things)))
-	return model.Thing{Tag: -1}, false
+	return model.Thing{}, false
 }
