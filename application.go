@@ -37,6 +37,7 @@ func main() {
 	done := make(chan struct{})
 	setupHandler(done, c)
 	setupSystemInterrupt(done, interrupt, c)
+	setupAI()
 }
 
 func setupHandler(done chan struct{}, c *websocket.Conn) {

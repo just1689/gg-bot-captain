@@ -1,7 +1,6 @@
 package ai
 
 import (
-	"fmt"
 	log "github.com/sirupsen/logrus"
 	"time"
 )
@@ -12,7 +11,7 @@ func Schedule() {
 		for {
 			targetThing, ok := PickTarget()
 			if !ok {
-				log.Infoln(fmt.Sprintf("Could not find a target. Going to sleep"))
+				log.Infoln("Could not find a target. Going to sleep")
 				time.Sleep(5 * time.Second)
 				continue
 			}
