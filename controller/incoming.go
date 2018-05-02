@@ -13,6 +13,7 @@ func HandleIncoming(b []byte) {
 
 	go func(b []byte) {
 
+		//Handle incoming pings
 		if string(b) == "0" {
 			util.SendMessage("1")
 			return
@@ -23,8 +24,13 @@ func HandleIncoming(b []byte) {
 			log.Errorln(fmt.Sprintf("Error: %e", err))
 			return
 		}
-
 		con, _ := jsonParsed.Path("conversation").Data().(string)
+
+		if messages.InConversationsToIgnore(con) {
+			log.Debugln(fmt.Sprintf("Ignoring message about: %s", con))
+			return
+		}
+
 		routeMessage(con, b)
 
 	}(b)
@@ -40,8 +46,6 @@ func routeMessage(con string, b []byte) {
 		handleDynamicThings(b)
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
-	} else if messages.InConversationsToIgnore(con) {
-		log.Debugln(fmt.Sprintf("Ignoring message about: %s", con))
 	} else {
 		log.Infoln(fmt.Sprintf("Received: %s", con))
 	}
