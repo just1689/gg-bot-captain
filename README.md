@@ -1,4 +1,4 @@
-# GG Bot - Captain 🛳️🛳️🛳️
+# GG Bot (Captain version 🛳️🛳️🛳️)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/just1689/gg-bot-captain)](https://goreportcard.com/report/github.com/just1689/gg-bot-captain)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6337f6fcf9837f809721/maintainability)](https://codeclimate.com/github/just1689/gg-bot-captain/maintainability)

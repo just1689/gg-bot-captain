@@ -1,9 +1,9 @@
 package ai
 
 import (
-	"github.com/just1689/gg-bot-captain/model"
-	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/controller"
+	"github.com/just1689/gg-bot-captain/mem"
+	"github.com/just1689/gg-bot-captain/model"
 )
 
 func pursueThingAndAttack(thing model.Thing) {
@@ -11,7 +11,5 @@ func pursueThingAndAttack(thing model.Thing) {
 	if err != nil {
 		return
 	}
-
-
 
 }

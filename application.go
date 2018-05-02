@@ -9,12 +9,13 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"github.com/just1689/gg-bot-captain/ai"
 	"github.com/just1689/gg-bot-captain/controller"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/util"
 )
 
-var addr = flag.String("addr", "192.168.88.238:80", "http service address")
+var addr = flag.String("addr", "team142.co.za:80", "http service address")
 
 func main() {
 
@@ -83,4 +84,11 @@ func setupSystemInterrupt(done chan struct{}, interrupt chan os.Signal, c *webso
 			return
 		}
 	}
+}
+
+func setupAI() {
+	go func() {
+		time.Sleep(5 * time.Second)
+		ai.Schedule()
+	}()
 }
