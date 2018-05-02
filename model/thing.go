@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"github.com/hashicorp/go-memdb"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -36,5 +37,28 @@ func IteratorToManyThings(iterator memdb.ResultIterator, err error) (items []Thi
 	}
 	log.Debugln(fmt.Sprintf("Thing iterator counts: %d", len(items)))
 	return items
+
+}
+
+//IteratorToFirstThing gets the first item of an iterator
+func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (item Thing, ok bool) {
+	if err != nil {
+		log.Error(err.Error())
+		return Thing{}, false
+	}
+	if iterator == nil {
+		return Thing{}, false
+	}
+	more := true
+	for more {
+		next := iterator.Next()
+		if next == nil {
+			more = false
+			continue
+		}
+		item := next.(Thing)
+		return item, true
+	}
+	return Thing{}, false
 
 }
