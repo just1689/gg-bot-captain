@@ -10,8 +10,6 @@ import (
 
 func handleMap(b []byte) {
 
-	//log.Infoln(fmt.Sprintf("Map: %s", string(b)))
-
 	mapMessage, errorBuild := incoming.BuildMessageMapFromString(b)
 	if errorBuild != nil {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
