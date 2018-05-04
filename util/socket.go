@@ -36,8 +36,3 @@ func sendItemImp(item interface{}, verbose bool) {
 func SendMessage(item interface{}) {
 	sendItemImp(item, false)
 }
-
-//GetSocket returns the socket connection pointer
-func GetSocket() *websocket.Conn {
-	return con
-}
