@@ -43,13 +43,8 @@ func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (item Thing,
 		return Thing{}, false
 	}
 
-	more := true
-	for more {
-		next := iterator.Next()
-		if next == nil {
-			more = false
-			continue
-		}
+	next := iterator.Next()
+	if next != nil {
 		item := next.(Thing)
 		return item, true
 	}
