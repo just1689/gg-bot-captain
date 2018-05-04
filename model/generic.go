@@ -5,14 +5,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//IteratorUseful checks if an iterator is useful
-func IteratorUseful(iterator memdb.ResultIterator, err error) bool {
+func iteratorUseful(iterator memdb.ResultIterator, err error) bool {
 	if err != nil {
 		log.Error(err.Error())
-		return true
+		return false
 	}
-	if iterator == nil {
-		return true
+	if nil == iterator {
+		return false
 	}
-	return false
+	return true
 }

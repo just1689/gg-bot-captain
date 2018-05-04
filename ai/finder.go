@@ -20,6 +20,6 @@ func pickTarget() (model.Thing, bool) {
 		log.Infoln(fmt.Sprintf("Found a thing to target"))
 		return thing, true
 	}
-	log.Infoln(fmt.Sprintf("Could not find target: %v", len(things)))
+	log.Infoln(fmt.Sprintf("Could not find target. Only found %v items", len(things)))
 	return model.Thing{}, false
 }

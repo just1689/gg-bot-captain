@@ -22,9 +22,13 @@ func handleMyTagMessage(b []byte) {
 //GetMyTag finds the users tag in the database
 func GetMyTag() uint {
 	ite, err := mem.GetAll(model.TableNameTag)
-	tags := model.IteratorToManyTags(ite, err)
-	if len(tags) == 1 {
-		return tags[0].Tag
+	c, e := model.IteratorToManyTags(ite, err)
+	if e != nil {
+		log.Errorln(fmt.Sprintf("Error GetMyTag: %v", e.Error()))
+		return 0
+	}
+	for item := range c {
+		return item.Tag
 	}
 	return 0
 

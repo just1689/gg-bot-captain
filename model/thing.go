@@ -18,7 +18,7 @@ type Thing struct {
 
 //IteratorToManyTags gets a list of tags
 func IteratorToManyThings(iterator memdb.ResultIterator, err error) (items []Thing) {
-	if IteratorInvalid(iterator, err) {
+	if iteratorUseful(iterator, err) == false {
 		return items
 	}
 
@@ -39,7 +39,7 @@ func IteratorToManyThings(iterator memdb.ResultIterator, err error) (items []Thi
 
 //IteratorToFirstThing gets the first item of an iterator
 func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (item Thing, ok bool) {
-	if IteratorInvalid(iterator, err) {
+	if iteratorUseful(iterator, err) == false {
 		return Thing{}, false
 	}
 
