@@ -5,8 +5,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//IteratorInvalid checks if an iterator is useful
-func IteratorInvalid(iterator memdb.ResultIterator, err error) bool {
+//IteratorUseful checks if an iterator is useful
+func IteratorUseful(iterator memdb.ResultIterator, err error) bool {
 	if err != nil {
 		log.Error(err.Error())
 		return true
