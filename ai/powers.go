@@ -1,8 +1,8 @@
 package ai
 
 import (
-	log "github.com/sirupsen/logrus"
 	"github.com/just1689/gg-bot-captain/controller"
+	log "github.com/sirupsen/logrus"
 )
 
 func shoot() {
