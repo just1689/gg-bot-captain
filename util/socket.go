@@ -45,5 +45,4 @@ func sendAsJson(item interface{}, verbose bool) {
 //SendMessage adds a message to the channel
 func SendMessage(item interface{}) {
 	conChan <- item
-	//sendItemImp(item, false)
 }
