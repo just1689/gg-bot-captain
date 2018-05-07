@@ -9,7 +9,7 @@ import (
 func Schedule() {
 	go func() {
 		for {
-			log.Println("ai.Schedule run...")
+			log.Println("ai.Scheduler run...")
 			targetThing, ok := pickTarget()
 			if !ok {
 				log.Infoln("Could not find a target. Going to sleep")

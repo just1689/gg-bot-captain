@@ -35,7 +35,7 @@ func pursueThingAndAttack(target model.Thing) {
 			break
 		}
 
-		time.Sleep(100 * time.Second)
+		time.Sleep(5 * time.Second)
 	}
 
 }
