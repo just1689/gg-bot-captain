@@ -1,13 +1,13 @@
 package ai_test
 
 import (
-	"testing"
+	"fmt"
+	"github.com/just1689/gg-bot-captain/ai"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
-	"github.com/just1689/gg-bot-captain/ai"
-	"github.com/stretchr/testify/assert"
 	log "github.com/sirupsen/logrus"
-	"fmt"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 const NAME = "ai.PickTarget"
