@@ -13,7 +13,7 @@ func pickTarget() (model.Thing, bool) {
 
 	things := controller.GetAllThings()
 	log.Debugln(fmt.Sprintf("Found things: %v", len(things)))
-	for _, thing := range things {
+	for thing := range things {
 		if thing.Tag == myTag {
 			continue
 		}

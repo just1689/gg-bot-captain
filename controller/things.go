@@ -27,9 +27,9 @@ func pushThingsAsync(things []model.Thing) {
 }
 
 //GetAllThings gets all things in database
-func GetAllThings() []model.Thing {
-	iter, err := mem.GetAll(model.TableNameThing)
-	things := model.IteratorToManyThings(iter, err)
-	return things
+func GetAllThings() chan model.Thing {
+	iterator, err := mem.GetAll(model.TableNameThing)
+	i := model.IteratorToManyThings(iterator, err)
+	return i
 
 }

@@ -15,3 +15,19 @@ func iteratorUseful(iterator memdb.ResultIterator, err error) bool {
 	}
 	return true
 }
+
+func iteratorToChannel(iterator memdb.ResultIterator, err error) (chan interface{}) {
+	c := make(chan interface{})
+	go func() {
+		if iteratorUseful(iterator, err) == false {
+			close(c)
+		}
+		next := iterator.Next()
+		for next != nil {
+			c <- next
+			next = iterator.Next()
+		}
+	}()
+	return c
+
+}

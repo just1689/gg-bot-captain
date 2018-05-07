@@ -1,8 +1,8 @@
 package model
 
 import (
-	"fmt"
 	"github.com/hashicorp/go-memdb"
+	"fmt"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -17,23 +17,21 @@ type Thing struct {
 }
 
 //IteratorToManyTags gets a list of tags
-func IteratorToManyThings(iterator memdb.ResultIterator, err error) (items []Thing) {
-	if iteratorUseful(iterator, err) == false {
-		return items
-	}
-
-	more := true
-	for more {
-		next := iterator.Next()
-		if next == nil {
-			more = false
-			continue
+func IteratorToManyThings(iterator memdb.ResultIterator, err error) (chan Thing) {
+	c := make(chan Thing)
+	go func() {
+		i := iteratorToChannel(iterator, err)
+		count := 0
+		for next := range i {
+			item := next.(Thing)
+			c <- item
+			count++
 		}
-		item := next.(Thing)
-		items = append(items, item)
-	}
-	log.Debugln(fmt.Sprintf("Thing iterator counts: %d", len(items)))
-	return items
+		close(c)
+		log.Debugln(fmt.Sprintf("Thing iterator counts: %d", count))
+
+	}()
+	return c
 
 }
 
@@ -42,7 +40,6 @@ func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (item Thing,
 	if iteratorUseful(iterator, err) == false {
 		return Thing{}, false
 	}
-
 	next := iterator.Next()
 	if next != nil {
 		item := next.(Thing)
