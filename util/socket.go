@@ -20,12 +20,12 @@ func StartSender() {
 	go func() {
 		for {
 			next := <-conChan
-			sendItemImp(next, false)
+			sendAsJson(next, false)
 		}
 	}()
 }
 
-func sendItemImp(item interface{}, verbose bool) {
+func sendAsJson(item interface{}, verbose bool) {
 	b, err := json.Marshal(item)
 	if err != nil {
 		log.Errorln(fmt.Sprintf("Error in util.socket: %s", err.Error()))
