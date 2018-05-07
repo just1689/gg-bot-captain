@@ -8,7 +8,6 @@ import (
 )
 
 var con *websocket.Conn
-var cha chan interface{}
 
 //AssignSocketConn assigns the connection pointer
 func AssignSocketConn(co *websocket.Conn) {
