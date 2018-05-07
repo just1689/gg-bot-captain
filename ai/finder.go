@@ -7,7 +7,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func pickTarget() (model.Thing, bool) {
+//PickTarget looks for another tank to shoot
+func PickTarget() (model.Thing, bool) {
 	myTag := controller.GetMyTag()
 	log.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 

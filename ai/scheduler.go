@@ -10,7 +10,7 @@ func Schedule() {
 	go func() {
 		for {
 			log.Println("ai.Scheduler run...")
-			targetThing, ok := pickTarget()
+			targetThing, ok := PickTarget()
 			if !ok {
 				log.Infoln("Could not find a target. Going to sleep")
 				time.Sleep(5 * time.Second)
