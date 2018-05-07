@@ -11,15 +11,16 @@ func pickTarget() (model.Thing, bool) {
 	myTag := controller.GetMyTag()
 	log.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 
-	things := controller.GetAllThings()
-	log.Debugln(fmt.Sprintf("Found things: %v", len(things)))
-	for thing := range things {
+	c := controller.GetAllThings()
+	count := 0
+	for thing := range c {
+		count++
 		if thing.Tag == myTag {
 			continue
 		}
 		log.Infoln(fmt.Sprintf("Found a thing to target"))
 		return thing, true
 	}
-	log.Infoln(fmt.Sprintf("Could not find target. Only found %v items", len(things)))
+	log.Infoln(fmt.Sprintf("Could not find target. Only found %v items", count))
 	return model.Thing{}, false
 }
