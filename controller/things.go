@@ -14,16 +14,23 @@ func handleDynamicThings(b []byte) {
 		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
 		return
 	}
-	list := things.Things
-	pushThingsAsync(list)
+
+	go func(things *[]model.Thing) {
+		c := make(chan model.Thing)
+		go pushThingsAsync(c)
+		count := 0
+		for _, item := range *things {
+			c <- item
+			count++
+		}
+		close(c)
+	}(&things.Things)
 }
 
-func pushThingsAsync(things []model.Thing) {
-	go func(things []model.Thing) {
-		for _, thing := range things {
-			mem.Push(model.TableNameThing, thing)
-		}
-	}(things)
+func pushThingsAsync(c chan model.Thing) {
+	for thing := range c {
+		mem.Push(model.TableNameThing, thing)
+	}
 }
 
 //GetAllThings gets all things in database

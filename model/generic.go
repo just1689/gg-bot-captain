@@ -16,7 +16,7 @@ func iteratorUseful(iterator memdb.ResultIterator, err error) bool {
 	return true
 }
 
-func iteratorToChannel(iterator memdb.ResultIterator, err error) (chan interface{}) {
+func iteratorToChannel(iterator memdb.ResultIterator, err error) chan interface{} {
 	c := make(chan interface{})
 	go func() {
 		if iteratorUseful(iterator, err) == false {

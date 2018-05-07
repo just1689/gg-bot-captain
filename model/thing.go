@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/hashicorp/go-memdb"
 	"fmt"
+	"github.com/hashicorp/go-memdb"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -17,7 +17,7 @@ type Thing struct {
 }
 
 //IteratorToManyTags gets a list of tags
-func IteratorToManyThings(iterator memdb.ResultIterator, err error) (chan Thing) {
+func IteratorToManyThings(iterator memdb.ResultIterator, err error) chan Thing {
 	c := make(chan Thing)
 	go func() {
 		i := iteratorToChannel(iterator, err)
