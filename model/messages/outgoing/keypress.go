@@ -14,10 +14,10 @@ type KeyDownMessage struct {
 
 //BuildKeyUpMessage builds a message object
 func BuildKeyUpMessage(key string) KeyUpMessage {
-	return KeyUpMessage{Conversation: "P_K_UP", Key: key}
+	return KeyUpMessage{Conversation: "P_KU", Key: key}
 }
 
 //BuildKeyDownMessage builds a message object
 func BuildKeyDownMessage(key string) KeyDownMessage {
-	return KeyDownMessage{Conversation: "P_K_DOWN", Key: key}
+	return KeyDownMessage{Conversation: "P_KD", Key: key}
 }
