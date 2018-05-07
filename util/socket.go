@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gorilla/websocket"
 	log "github.com/sirupsen/logrus"
-	"time"
 )
 
 var con *websocket.Conn
@@ -16,12 +15,12 @@ func AssignSocketConn(co *websocket.Conn) {
 	con = co
 }
 
+//StartSender starts a goroutine to send messages
 func StartSender() {
 	go func() {
 		for {
 			next := <-conChan
 			sendItemImp(next, false)
-			time.Sleep(100 * time.Millisecond)
 		}
 	}()
 }
