@@ -44,7 +44,6 @@ func pursueThingAndAttack(target model.Thing) {
 		}
 
 		//Sleep 100 ms
-		//time.Sleep(time.Duration(100))
 		time.Sleep(100 * time.Millisecond)
 	}
 
