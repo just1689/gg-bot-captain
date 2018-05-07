@@ -24,9 +24,17 @@ func pursueThingAndAttack(target model.Thing) {
 	start := time.Now()
 	for {
 
-		logrus.Infoln(fmt.Sprintf("Checking if I would hit: %v", target.Tag))
 		if wouldIHit(me, target) {
 			shoot()
+
+		} else {
+			//Rotate
+			direction := GetRotationBetween(me, target)
+			if direction == model.DirectionClockwise {
+				controller.PressRight()
+			} else if direction == model.DirectionAntiClockwise {
+				controller.PressLeft()
+			}
 		}
 
 		duration := time.Since(start)
@@ -35,7 +43,8 @@ func pursueThingAndAttack(target model.Thing) {
 			break
 		}
 
-		time.Sleep(5 * time.Second)
+		//Sleep 100 ms
+		time.Sleep(time.Duration(100))
 	}
 
 }
