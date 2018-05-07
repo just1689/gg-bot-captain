@@ -20,6 +20,7 @@ var addr = flag.String("addr", "team142.co.za:80", "http service address")
 func main() {
 
 	mem.Init()
+
 	flag.Parse()
 	log.SetFlags(0)
 	interrupt := make(chan os.Signal, 1)
@@ -37,7 +38,12 @@ func main() {
 	done := make(chan struct{})
 	setupHandler(done, c)
 	setupAI()
+	setupKeyboard()
 	setupSystemInterrupt(done, interrupt, c)
+}
+
+func setupKeyboard() {
+	controller.StartKeyboard()
 }
 
 func setupHandler(done chan struct{}, c *websocket.Conn) {
