@@ -22,11 +22,14 @@ func StartKeyboard() {
 	}()
 }
 
+//KeyUp lifts a key
 func KeyUp(in string) {
 	go func() {
 		model.KeyBoardChanUp <- in
 	}()
 }
+
+//KeyDown presses a key down
 func KeyDown(in string) {
 	go func() {
 		model.KeyBoardChanDown <- in
