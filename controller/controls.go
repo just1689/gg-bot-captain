@@ -55,3 +55,8 @@ func PressLeft() {
 func PressRight() {
 	PressKey("D", KeyDownTime)
 }
+
+//PressNumber1 presses a power
+func PressNumber1() {
+	PressKey("1", KeyDownTime)
+}

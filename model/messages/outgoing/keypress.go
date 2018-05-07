@@ -2,14 +2,14 @@ package outgoing
 
 //KeyUpMessage describes a message to the server
 type KeyUpMessage struct {
-	Conversation string
-	Key          string
+	Conversation string `json:"conversation" bson:"conversation"`
+	Key          string `json:"key" bson:"key"`
 }
 
 //KeyDownMessage describes a message to the server
 type KeyDownMessage struct {
-	Conversation string
-	Key          string
+	Conversation string `json:"conversation" bson:"conversation"`
+	Key          string `json:"key" bson:"key"`
 }
 
 //BuildKeyUpMessage builds a message object

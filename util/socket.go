@@ -5,13 +5,25 @@ import (
 	"fmt"
 	"github.com/gorilla/websocket"
 	log "github.com/sirupsen/logrus"
+	"time"
 )
 
 var con *websocket.Conn
+var conChan = make(chan interface{})
 
 //AssignSocketConn assigns the connection pointer
 func AssignSocketConn(co *websocket.Conn) {
 	con = co
+}
+
+func StartSender() {
+	go func() {
+		for {
+			next := <-conChan
+			sendItemImp(next, false)
+			time.Sleep(100 * time.Millisecond)
+		}
+	}()
 }
 
 func sendItemImp(item interface{}, verbose bool) {
@@ -33,5 +45,6 @@ func sendItemImp(item interface{}, verbose bool) {
 
 //SendMessage adds a message to the channel
 func SendMessage(item interface{}) {
-	sendItemImp(item, false)
+	conChan <- item
+	//sendItemImp(item, false)
 }

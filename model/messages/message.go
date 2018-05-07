@@ -22,6 +22,7 @@ var ConversationsToIgnore = [...]string{
 	"S_SHARE_BULLETS",
 	"S_SHARE_SPRAY",
 	"S_ORB_N",
+	"S_SHARE_COOLDOWN",
 	"S_PLAYER_LEFT"}
 
 //InConversationsToIgnore checks is a conversation is uninteresting

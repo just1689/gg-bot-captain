@@ -9,6 +9,7 @@ import (
 func Schedule() {
 	go func() {
 		for {
+			time.Sleep(10 * time.Second)
 			log.Println("ai.Scheduler run...")
 			targetThing, ok := PickTarget()
 			if !ok {

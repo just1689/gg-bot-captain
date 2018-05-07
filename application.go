@@ -38,6 +38,7 @@ func main() {
 	done := make(chan struct{})
 	setupHandler(done, c)
 	setupAI()
+	util.StartSender()
 	setupKeyboard()
 	setupSystemInterrupt(done, interrupt, c)
 }

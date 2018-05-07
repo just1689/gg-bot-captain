@@ -9,5 +9,6 @@ import (
 //SendJoinGameMessage handles incoming messages
 func SendJoinGameMessage(game model.Game) {
 	message := outgoing.BuildMessageJoinGame(game.ID)
+
 	util.SendMessage(message)
 }
