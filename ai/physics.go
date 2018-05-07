@@ -10,9 +10,9 @@ const midRand = maxRand/2 - 1
 
 func wouldIHit(me model.Thing, them model.Thing) bool {
 
-	_ := GetRotationBetween(me, them)
+	rot := GetRotationBetween(me, them)
 
-	r := rand.Intn(maxRand)
+	r := rand.Intn(maxRand * rot)
 	if r > midRand {
 		return true
 	}
