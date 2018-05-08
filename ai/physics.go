@@ -2,31 +2,19 @@ package ai
 
 import (
 	"github.com/just1689/gg-bot-captain/model"
-	"math/rand"
 )
 
-const maxRand = 1000
-const midRand = maxRand/2 - 1
+func GetSpacialPoints(me model.Thing, them model.Thing) (model.SpacialPoint, model.SpacialPoint) {
+	viewer := me.Point.PointToSpacialPoint()
+	target := them.Point.PointToSpacialPoint()
+	return viewer, target
 
-func wouldIHit(me model.Thing, them model.Thing) bool {
-
-	rot := GetRotationBetween(me, them)
-
-	r := rand.Intn(maxRand * rot)
-	if r > midRand {
-		return true
-	}
-
-	//Todo: Impl.
-	//For now, just be random
-	return false
 }
 
 //GetRotationBetween finds out which way to rotate to meet another tank
 func GetRotationBetween(me model.Thing, them model.Thing) int {
 
-	viewer := me.Point.PointToSpacialPoint()
-	target := them.Point.PointToSpacialPoint()
+	viewer, target := GetSpacialPoints(me, them)
 	gradient := GetGradient(viewer, target)
 
 	//Impossible
@@ -44,6 +32,7 @@ func IsAimingAt(viewer model.SpacialPoint, target model.SpacialPoint) bool {
 }
 
 func Aligns(viewer model.SpacialPoint, target model.SpacialPoint, gradient int) bool {
+
 	return true
 }
 

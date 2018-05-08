@@ -23,10 +23,9 @@ func pursueThingAndAttack(target model.Thing) {
 
 	start := time.Now()
 	for {
-
-		if wouldIHit(me, target) {
+		meSP, targetSP := GetSpacialPoints(me, target)
+		if IsAimingAt(meSP, targetSP) {
 			shoot()
-
 		} else {
 			//Rotate
 			direction := GetRotationBetween(me, target)
