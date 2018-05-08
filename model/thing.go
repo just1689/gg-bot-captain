@@ -3,7 +3,7 @@ package model
 import (
 	"fmt"
 	"github.com/hashicorp/go-memdb"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 //TableNameThing is the name of the table
@@ -28,7 +28,7 @@ func IteratorToManyThings(iterator memdb.ResultIterator, err error) chan Thing {
 			count++
 		}
 		close(c)
-		log.Debugln(fmt.Sprintf("Thing iterator counts: %d", count))
+		logrus.Debugln(fmt.Sprintf("Thing iterator counts: %d", count))
 
 	}()
 	return c

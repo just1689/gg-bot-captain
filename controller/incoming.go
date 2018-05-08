@@ -5,7 +5,7 @@ import (
 	"github.com/Jeffail/gabs"
 	"github.com/just1689/gg-bot-captain/model/messages"
 	"github.com/just1689/gg-bot-captain/util"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 //HandleIncoming handles incoming messages
@@ -21,13 +21,13 @@ func HandleIncoming(b []byte) {
 
 		jsonParsed, err := gabs.ParseJSON(b)
 		if err != nil {
-			log.Errorln(fmt.Sprintf("Error: %e", err))
+			logrus.Errorln(fmt.Sprintf("Error: %e", err))
 			return
 		}
 		con, _ := jsonParsed.Path("conversation").Data().(string)
 
 		if messages.InConversationsToIgnore(con) {
-			log.Debugln(fmt.Sprintf("Ignoring message about: %s", con))
+			logrus.Debugln(fmt.Sprintf("Ignoring message about: %s", con))
 			return
 		}
 
@@ -47,7 +47,7 @@ func routeMessage(con string, b []byte) {
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
 	} else {
-		log.Infoln(fmt.Sprintf("Received: %s", con))
+		logrus.Infoln(fmt.Sprintf("Received: %s", con))
 	}
 
 }

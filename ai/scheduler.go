@@ -1,7 +1,7 @@
 package ai
 
 import (
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"time"
 )
 
@@ -10,10 +10,10 @@ func Schedule() {
 	go func() {
 		for {
 			time.Sleep(10 * time.Second)
-			log.Println("ai.Scheduler run...")
+			logrus.Println("ai.Scheduler run...")
 			targetThing, ok := PickTarget()
 			if !ok {
-				log.Infoln("Could not find a target. Going to sleep")
+				logrus.Infoln("Could not find a target. Going to sleep")
 				time.Sleep(5 * time.Second)
 				continue
 			}

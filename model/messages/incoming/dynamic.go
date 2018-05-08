@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/just1689/gg-bot-captain/util"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 //MessageShareDynamicThings is a wrapper for things
@@ -16,7 +16,7 @@ type MessageShareDynamicThings struct {
 //BuildMessageShareDynamicThingsFromString creates an object from bytes
 func BuildMessageShareDynamicThingsFromString(b []byte) (item MessageShareDynamicThings, err error) {
 	if err = util.BytesToDecoder(b).Decode(&item); err != nil {
-		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
+		logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", err.Error()))
 	}
 	return item, err
 }

@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"github.com/just1689/gg-bot-captain/controller"
 	"github.com/just1689/gg-bot-captain/model"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 //PickTarget looks for another tank to shoot
 func PickTarget() (model.Thing, bool) {
 	myTag := controller.GetMyTag()
-	log.Infoln(fmt.Sprintf("My tag is: %v", myTag))
+	logrus.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 
 	c := controller.GetAllThings()
 	count := 0
@@ -19,9 +19,9 @@ func PickTarget() (model.Thing, bool) {
 		if thing.Tag == myTag {
 			continue
 		}
-		log.Infoln(fmt.Sprintf("Found a thing to target"))
+		logrus.Infoln(fmt.Sprintf("Found a thing to target"))
 		return thing, true
 	}
-	log.Infoln(fmt.Sprintf("Could not find target. Only found %v items", count))
+	logrus.Infoln(fmt.Sprintf("Could not find target. Only found %v items", count))
 	return model.Thing{}, false
 }

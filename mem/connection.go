@@ -3,7 +3,7 @@ package mem
 import (
 	"fmt"
 	"github.com/hashicorp/go-memdb"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var (
@@ -16,7 +16,7 @@ func Init() {
 	// Create a new data base
 	dbConnect, err := memdb.NewMemDB(schema)
 	if err != nil {
-		log.Errorln(fmt.Sprintf("Could not connect to database: %s", err.Error()))
+		logrus.Errorln(fmt.Sprintf("Could not connect to database: %s", err.Error()))
 		panic(err)
 	}
 	db = dbConnect
@@ -64,12 +64,12 @@ func getTransaction(write bool) *memdb.Txn {
 
 //Push stores an object
 func Push(table string, obj interface{}) error {
-	log.Debugln(fmt.Sprintf("Trying to insert a: %s", table))
+	logrus.Debugln(fmt.Sprintf("Trying to insert a: %s", table))
 	txn := db.Txn(true)
 	defer txn.Abort()
 	if err := txn.Insert(table, obj); err != nil {
-		log.Errorln(fmt.Sprintf("Error pushing to mem: %s", err))
-		log.Errorln(fmt.Sprintf("Error pushing to mem: %s", err.Error()))
+		logrus.Errorln(fmt.Sprintf("Error pushing to mem: %s", err))
+		logrus.Errorln(fmt.Sprintf("Error pushing to mem: %s", err.Error()))
 		defer txn.Abort()
 		return err
 	}

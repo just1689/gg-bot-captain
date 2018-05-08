@@ -5,7 +5,7 @@ import (
 	"github.com/just1689/gg-bot-captain/ai"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -34,6 +34,6 @@ func TestPickTarget(t *testing.T) {
 	assert.Equal(t, theirTag, target.Tag, "The target was not them. It should be them.")
 
 	if t.Failed() {
-		log.Println(fmt.Sprintf("Testing %s failed ❌ ", NAME))
+		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", NAME))
 	}
 }

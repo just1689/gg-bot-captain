@@ -5,14 +5,14 @@ import (
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/just1689/gg-bot-captain/model/messages/incoming"
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 func handleMap(b []byte) {
 
 	mapMessage, errorBuild := incoming.BuildMessageMapFromString(b)
 	if errorBuild != nil {
-		log.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
+		logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
 		return
 	}
 	assignTileID(mapMessage.Map)
