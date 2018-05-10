@@ -10,7 +10,8 @@
 
 
 ## Project
-The goal of this project is to build a bot for GG - the game with no name.
+The goal of this project is to build a bot for GG - the game with no name. The bot will be built using Goal Oriented Action Planning, once I understand it a bit better.
+
 See: https://github.com/team142/gg
 
 
