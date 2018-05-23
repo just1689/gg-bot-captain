@@ -4,7 +4,7 @@ import (
 	"github.com/just1689/gg-bot-captain/model"
 )
 
-func GetSpacialPoints(me model.Thing, them model.Thing) (model.SpacialPoint, model.SpacialPoint) {
+func getSpacialPoints(me model.Thing, them model.Thing) (model.SpacialPoint, model.SpacialPoint) {
 	viewer := me.Point.PointToSpacialPoint()
 	target := them.Point.PointToSpacialPoint()
 	return viewer, target
@@ -14,7 +14,7 @@ func GetSpacialPoints(me model.Thing, them model.Thing) (model.SpacialPoint, mod
 //GetRotationBetween finds out which way to rotate to meet another tank
 func GetRotationBetween(me model.Thing, them model.Thing) int {
 
-	viewer, target := GetSpacialPoints(me, them)
+	viewer, target := getSpacialPoints(me, them)
 	gradient := GetGradient(viewer, target)
 
 	//Impossible

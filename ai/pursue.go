@@ -23,7 +23,7 @@ func pursueThingAndAttack(target model.Thing) {
 
 	start := time.Now()
 	for {
-		meSP, targetSP := GetSpacialPoints(me, target)
+		meSP, targetSP := getSpacialPoints(me, target)
 		if IsAimingAt(meSP, targetSP) {
 			shoot()
 		} else {
