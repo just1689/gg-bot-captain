@@ -17,6 +17,9 @@ See: https://github.com/team142/gg
 ## Road map
 <a href="https://trello.com/b/PdVD4YUo/gg-bot-captain"><img src="docs/scope.png" width="800"></a>
 
+## AI planning
+
+<img src="docs/ai.png" width="800" />
 
 
 ## Planning & progress
