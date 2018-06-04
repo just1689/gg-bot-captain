@@ -1,8 +1,7 @@
-package ai
+package controller
 
 import (
 	"fmt"
-	"github.com/just1689/gg-bot-captain/ai"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
@@ -26,7 +25,7 @@ func TestPickTarget(t *testing.T) {
 	mem.Push(model.TableNameThing, theirTank)
 
 	//The call
-	target, ok := ai.PickTarget()
+	target, ok := PickTarget()
 
 	//The test
 	assert.Equal(t, ok, true, "Was not able to find a target. Should have been able to.")

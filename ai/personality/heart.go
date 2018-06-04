@@ -1,6 +1,9 @@
-package ai
+package personality
 
-import "github.com/just1689/gg-bot-captain/ai/goal"
+import (
+	"github.com/just1689/gg-bot-captain/ai/goal"
+	"github.com/just1689/gg-bot-captain/controller"
+)
 
 func ChoosePersonality() Personality {
 
@@ -12,7 +15,7 @@ func ChoosePersonality() Personality {
 
 func ChooseGoal(personality Personality) goal.Goal {
 	if personality == Hunter {
-		target, found := PickTarget()
+		target, found := controller.PickTarget()
 		if found {
 			return goal.NewKillGoal(target.Tag)
 		}

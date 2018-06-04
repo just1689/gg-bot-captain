@@ -1,18 +1,17 @@
-package ai
+package controller
 
 import (
 	"fmt"
-	"github.com/just1689/gg-bot-captain/controller"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
 )
 
 //PickTarget looks for another tank to shoot
 func PickTarget() (model.Thing, bool) {
-	myTag := controller.GetMyTag()
+	myTag := GetMyTag()
 	logrus.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 
-	c := controller.GetAllThings()
+	c := GetAllThings()
 	count := 0
 	for thing := range c {
 		count++
