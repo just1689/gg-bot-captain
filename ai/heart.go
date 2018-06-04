@@ -1,5 +1,7 @@
 package ai
 
+import "github.com/just1689/gg-bot-captain/ai/goal"
+
 func ChoosePersonality() Personality {
 
 	//TODO: better impl
@@ -8,19 +10,19 @@ func ChoosePersonality() Personality {
 	return randomPersonality()
 }
 
-func ChooseGoal(personality Personality) Goal {
+func ChooseGoal(personality Personality) goal.Goal {
 	if personality == Hunter {
 		target, found := PickTarget()
 		if found {
-			return newKillGoal(target)
+			return goal.NewKillGoal(target.Tag)
 		}
 	}
 	if personality == Wimp {
-		return newHideGoal()
+		return goal.NewHideGoal()
 
 	}
 
 	//If my personality does not help me choose a goal, then hide is goal
-	return newHideGoal()
+	return goal.NewHideGoal()
 
 }
