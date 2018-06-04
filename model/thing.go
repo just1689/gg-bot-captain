@@ -36,15 +36,15 @@ func IteratorToManyThings(iterator memdb.ResultIterator, err error) chan Thing {
 }
 
 //IteratorToFirstThing gets the first item of an iterator
-func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (item Thing, ok bool) {
+func IteratorToFirstThing(iterator memdb.ResultIterator, err error) (found bool, item Thing) {
 	if iteratorUseful(iterator, err) == false {
-		return Thing{}, false
+		return false, Thing{}
 	}
 	next := iterator.Next()
 	if next != nil {
 		item := next.(Thing)
-		return item, true
+		return true, item
 	}
-	return Thing{}, false
+	return false, Thing{}
 
 }
