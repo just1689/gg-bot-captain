@@ -1,4 +1,4 @@
-package ai_test
+package ai
 
 import (
 	"fmt"
