@@ -1,10 +1,10 @@
 package goal
 
 import (
-	"testing"
-	"github.com/sirupsen/logrus"
 	"fmt"
 	"github.com/magiconair/properties/assert"
+	"github.com/sirupsen/logrus"
+	"testing"
 )
 
 func TestNewHideGoal(t *testing.T) {
