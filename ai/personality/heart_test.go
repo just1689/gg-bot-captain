@@ -41,7 +41,6 @@ func TestChooseGoal(t *testing.T) {
 
 	assert.Equal(t, 1, 2, "Well this does not make any sense at all")
 
-
 	if t.Failed() {
 		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", NAME))
 	}
