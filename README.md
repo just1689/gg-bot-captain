@@ -11,7 +11,8 @@
 ## Project
 The goal of this project is to build a bot for GG - the game with no name. The bot will be built using Goal Oriented Action Planning, once I understand it a bit better.
 
-<a href="https://github.com/team142/gg"><img width="100" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" /></a>
+<a href="https://github.com/team142/gg"><img width="100" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" /></a><br />
+https://github.com/team142/gg
 
 
 ## Road map
