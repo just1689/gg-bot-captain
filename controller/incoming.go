@@ -43,7 +43,7 @@ func routeMessage(con string, b []byte) {
 	} else if con == messages.ConversationListOfGames {
 		handleListOfGames(b)
 	} else if con == messages.ConversationShareDynamicThings {
-		handleDynamicThings(b)
+		PersistThingsMessage(b)
 	} else if con == messages.ConversationShareMap {
 		handleMap(b)
 	} else {

@@ -8,29 +8,23 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func handleDynamicThings(b []byte) {
-	things, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
-	if errorBuild != nil {
-		logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
-		return
-	}
+//PersistThingsMessage puts a the things found in a []byte into the database, signalling when done
+func PersistThingsMessage(b []byte) (signal chan bool) {
 
-	go func(things *[]model.Thing) {
-		c := make(chan model.Thing)
-		go pushThingsAsync(c)
-		count := 0
-		for _, item := range *things {
-			c <- item
-			count++
+	go func() {
+		things, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
+		if errorBuild != nil {
+			logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
+			signal <- true
+			return
 		}
-		close(c)
-	}(&things.Things)
-}
+		for _, thing := range things.Things {
+			mem.Push(model.TableNameThing, thing)
+		}
+		signal <- true
+	}()
+	return
 
-func pushThingsAsync(c chan model.Thing) {
-	for thing := range c {
-		mem.Push(model.TableNameThing, thing)
-	}
 }
 
 //GetAllThings gets all things in database
