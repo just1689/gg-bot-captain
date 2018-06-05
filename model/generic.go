@@ -27,6 +27,7 @@ func iteratorToChannel(iterator memdb.ResultIterator, err error) chan interface{
 			c <- next
 			next = iterator.Next()
 		}
+		close(c)
 	}()
 	return c
 
