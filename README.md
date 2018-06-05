@@ -1,9 +1,9 @@
 # GG Bot (Captain version 🛳️🛳️🛳️)
 
+[![travis](https://travis-ci.org/just1689/gg-bot-captain.svg?branch=master)](https://travis-ci.org/just1689/gg-bot-captain)
+[![codecov](https://codecov.io/gh/just1689/gg-bot-captain/branch/master/graph/badge.svg)](https://codecov.io/gh/just1689/gg-bot-captain)
 [![Go Report Card](https://goreportcard.com/badge/github.com/just1689/gg-bot-captain)](https://goreportcard.com/report/github.com/just1689/gg-bot-captain)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6337f6fcf9837f809721/maintainability)](https://codeclimate.com/github/just1689/gg-bot-captain/maintainability)
-[![codecov](https://codecov.io/gh/just1689/gg-bot-captain/branch/master/graph/badge.svg)](https://codecov.io/gh/just1689/gg-bot-captain)
-[![travis](https://travis-ci.org/just1689/gg-bot-captain.svg?branch=master)](https://travis-ci.org/just1689/gg-bot-captain)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat)](http://badges.mit-license.org)
 
 
