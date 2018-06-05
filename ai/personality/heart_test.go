@@ -10,9 +10,19 @@ import (
 	"testing"
 )
 
-const NAME = "ai.personality"
+func TestChoosePersonality(t *testing.T) {
+	name := "ai.personality.TestChoosePersonality"
+
+	myPersonality := ChoosePersonality()
+	assert.Equal(t, myPersonality, Hunter, "My personality should be hunter")
+
+	if t.Failed() {
+		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", name))
+	}
+}
 
 func TestChooseGoal(t *testing.T) {
+	name := "ai.personality.TestChoosePersonality"
 
 	//Setup the game
 	mem.Init()
@@ -40,6 +50,6 @@ func TestChooseGoal(t *testing.T) {
 	assert.Equal(t, myGoal.Goal, goal.Hide, "A wimp should hide")
 
 	if t.Failed() {
-		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", NAME))
+		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", name))
 	}
 }
