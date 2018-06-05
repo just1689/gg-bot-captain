@@ -3,8 +3,8 @@ package goal
 import (
 	"fmt"
 	"github.com/sirupsen/logrus"
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestNewHideGoal(t *testing.T) {
