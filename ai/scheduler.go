@@ -1,8 +1,8 @@
 package ai
 
 import (
-	"github.com/sirupsen/logrus"
 	"github.com/just1689/gg-bot-captain/ai/personality"
+	"github.com/sirupsen/logrus"
 )
 
 //Schedule handles the running of the AI go routine
@@ -16,5 +16,5 @@ func Schedule() {
 			plan(myGoal, myPersonality)
 		}
 	}()
-	
+
 }

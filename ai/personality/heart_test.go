@@ -2,15 +2,15 @@ package personality
 
 import (
 	"fmt"
+	"github.com/just1689/gg-bot-captain/ai/goal"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"testing"
-	"github.com/just1689/gg-bot-captain/ai/goal"
 )
 
-const NAME = "ai.PickTarget"
+const NAME = "ai.personality"
 
 func TestChooseGoal(t *testing.T) {
 
@@ -38,6 +38,9 @@ func TestChooseGoal(t *testing.T) {
 	myPersonality = Wimp
 	myGoal = ChooseGoal(myPersonality)
 	assert.Equal(t, myGoal.Goal, goal.Hide, "A wimp should hide")
+
+	assert.Equal(t, 1, 2, "Well this does not make any sense at all")
+
 
 	if t.Failed() {
 		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", NAME))

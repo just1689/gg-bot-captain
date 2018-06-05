@@ -3,7 +3,7 @@ package personality
 type Personality int
 
 const (
-	Hunter Personality =  iota
+	Hunter Personality = iota
 	Wimp
 )
 
