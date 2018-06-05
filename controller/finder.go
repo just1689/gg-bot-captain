@@ -9,18 +9,15 @@ import (
 //PickTarget looks for another tank to shoot
 func PickTarget() (model.Thing, bool) {
 	myTag := GetMyTag()
-	logrus.Infoln(fmt.Sprintf("My tag is: %v", myTag))
 
 	c := GetAllThings()
 	count := 0
 	for thing := range c {
 		count++
-		if thing.Tag == myTag {
-			continue
+		if thing.Tag != myTag {
+			logrus.Infoln(fmt.Sprintf("Found a thing to target"))
+			return thing, true
 		}
-		logrus.Infoln(fmt.Sprintf("Found a thing to target"))
-		return thing, true
 	}
-	logrus.Infoln(fmt.Sprintf("Could not find target. Only found %v items", count))
 	return model.Thing{}, false
 }
