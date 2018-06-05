@@ -1,3 +1,4 @@
 ignore:
   - "docs/**"  # nothing to see here ;)
   - "util/**"  # nothing to see here ;)
+  - "model/**"  # nothing to see here ;)
