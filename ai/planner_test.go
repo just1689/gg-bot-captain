@@ -2,12 +2,12 @@ package ai
 
 import (
 	"fmt"
+	"github.com/just1689/gg-bot-captain/ai/personality"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"testing"
-	"github.com/just1689/gg-bot-captain/ai/personality"
 )
 
 func TestPlan(t *testing.T) {
