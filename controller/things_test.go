@@ -16,17 +16,10 @@ func TestPersistThingsMessage(t *testing.T) {
 	name := "controller.TestPersistThingsMessage"
 
 	mem.Init()
-	myTag := uint(1)
-	me := model.Tag{Tag: myTag}
-	mem.Push(model.TableNameTag, me)
-	myTank := model.Thing{Tag: me.Tag}
-	msg := incoming.MessageShareDynamicThings{}
-	things := []model.Thing{myTank}
-	msg.Things = things
-	bytes, _ := json.Marshal(myTank)
-	signal := PersistThingsMessage(bytes)
 
-	<-signal
+	myTag := uint(1)
+	insertTankBlocking(myTag)
+
 	c := GetAllThings()
 
 	for item := range c {
