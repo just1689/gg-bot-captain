@@ -44,7 +44,7 @@ func main() {
 }
 
 func setupKeyboard() {
-	controller.StartKeyboard()
+	util.StartKeyboard()
 }
 
 func setupHandler(done chan struct{}, c *websocket.Conn) {
