@@ -1,4 +1,5 @@
 ignore:
+  - "application.go"  # nothing to see here ;)
   - "docs/**"  # nothing to see here ;)
   - "util/**"  # nothing to see here ;)
   - "model/**"  # nothing to see here ;)
