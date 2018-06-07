@@ -9,8 +9,8 @@ import (
 )
 
 //PersistThingsMessage puts a the things found in a []byte into the database, signalling when done
-func PersistThingsMessage(b []byte) (signal chan bool) {
-
+func PersistThingsMessage(b []byte) chan bool {
+	signal := make(chan bool)
 	go func() {
 		things, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
 		if errorBuild != nil {
@@ -23,7 +23,7 @@ func PersistThingsMessage(b []byte) (signal chan bool) {
 		}
 		signal <- true
 	}()
-	return
+	return signal
 
 }
 
