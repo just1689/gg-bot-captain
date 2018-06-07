@@ -16,10 +16,8 @@ func TestPersistThingsMessage(t *testing.T) {
 	name := "controller.TestPersistThingsMessage"
 
 	mem.Init()
-
 	myTag := uint(1)
 	insertTankBlocking(myTag)
-
 	c := GetAllThings()
 
 	for item := range c {
