@@ -68,10 +68,8 @@ func insertTankBlocking(tag uint) {
 	me := model.Tag{Tag: myTag}
 	mem.Push(model.TableNameTag, me)
 	myTank := model.Thing{Tag: me.Tag}
-	msg := incoming.MessageShareDynamicThings{}
-	things := []model.Thing{myTank}
-	msg.Things = things
-	bytes, _ := json.Marshal(myTank)
+	msg := incoming.MessageShareDynamicThings{Things: []model.Thing{myTank}}
+	bytes, _ := json.Marshal(msg)
 	signal := PersistThingsMessage(bytes)
 	<-signal
 
