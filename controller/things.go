@@ -12,13 +12,13 @@ import (
 func PersistThingsMessage(b []byte) chan bool {
 	signal := make(chan bool)
 	go func() {
-		things, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
+		msg, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
 		if errorBuild != nil {
 			logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
 			signal <- true
 			return
 		}
-		for _, thing := range things.Things {
+		for _, thing := range msg.Things {
 			mem.Push(model.TableNameThing, thing)
 		}
 		signal <- true
