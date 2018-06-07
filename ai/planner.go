@@ -15,6 +15,6 @@ func plan(myGoal goal.Goal, myPersonality personality.Personality) (actions []mo
 		//Hide
 		ok = true
 	}
-	return actions, false
+	return actions, ok
 
 }
