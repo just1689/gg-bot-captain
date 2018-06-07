@@ -6,8 +6,7 @@ import (
 )
 
 func TestBytesToDecoder(t *testing.T) {
-	str := "Hello world"
-	mySlice := []byte(str)
+	mySlice := []byte("Hello world")
 	decoder := BytesToDecoder(mySlice)
 
 	assert.NotNil(t, decoder, "The decoder should build a builder")
