@@ -1,13 +1,16 @@
 package controller
 
 import (
-	"testing"
-	"github.com/just1689/gg-bot-captain/model"
 	"encoding/json"
+	"github.com/just1689/gg-bot-captain/mem"
+	"github.com/just1689/gg-bot-captain/model"
 	"github.com/magiconair/properties/assert"
+	"testing"
 )
 
 func TestHandleMyTagMessage(t *testing.T) {
+
+	mem.Init()
 
 	myTag := uint(10)
 	tag := model.Tag{Tag: myTag}

@@ -17,7 +17,6 @@ func HandleMyTagMessage(b []byte) chan bool {
 			return
 		}
 		mem.Push(model.TableNameTag, tag)
-		SendMessageJoinServer()
 		logrus.Infoln(fmt.Sprintf("My tag in the database is: %v", GetMyTag()))
 		c <- true
 	}()

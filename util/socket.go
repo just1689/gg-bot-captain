@@ -31,6 +31,12 @@ func sendAsJson(item interface{}, verbose bool) {
 		logrus.Errorln(fmt.Sprintf("Error in util.socket: %s", err.Error()))
 		return
 	}
+
+	if con == nil {
+		logrus.Errorln(fmt.Sprintf("Error in util.socket: Socket is nil"))
+		return
+	}
+
 	err = con.WriteMessage(websocket.TextMessage, b)
 	if err != nil {
 		logrus.Errorln(fmt.Sprintf("Error in util.socket: %s", err.Error()))
