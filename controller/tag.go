@@ -7,7 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func handleMyTagMessage(b []byte) chan bool {
+func HandleMyTagMessage(b []byte) chan bool {
 	c := make(chan bool)
 	go func() {
 		tag, errorBuild := model.BuildTagFromString(b)
