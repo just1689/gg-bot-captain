@@ -42,7 +42,10 @@ func routeMessage(con string, b []byte) {
 		<-HandleMyTagMessage(b)
 		SendMessageJoinServer()
 	} else if con == messages.ConversationListOfGames {
-		handleListOfGames(b)
+		c := handleListOfGames(b)
+		for game := range c {
+			SendJoinGameMessage(game)
+		}
 	} else if con == messages.ConversationShareDynamicThings {
 		PersistThingsMessage(b)
 	} else if con == messages.ConversationShareMap {

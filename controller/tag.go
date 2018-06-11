@@ -14,11 +14,13 @@ func HandleMyTagMessage(b []byte) chan bool {
 		if errorBuild != nil {
 			logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
 			c <- true
+			close(c)
 			return
 		}
 		mem.Push(model.TableNameTag, tag)
 		logrus.Infoln(fmt.Sprintf("My tag in the database is: %v", GetMyTag()))
 		c <- true
+		close(c)
 	}()
 	return c
 
