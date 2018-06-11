@@ -7,15 +7,21 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func handleMyTagMessage(b []byte) {
-	tag, errorBuild := model.BuildTagFromString(b)
-	if errorBuild != nil {
-		logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
-		return
-	}
-	mem.Push(model.TableNameTag, tag)
-	SendMessageJoinServer()
-	logrus.Infoln(fmt.Sprintf("My tag in the database is: %v", GetMyTag()))
+func handleMyTagMessage(b []byte) chan bool {
+	c := make(chan bool)
+	go func() {
+		tag, errorBuild := model.BuildTagFromString(b)
+		if errorBuild != nil {
+			logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
+			c <- true
+			return
+		}
+		mem.Push(model.TableNameTag, tag)
+		SendMessageJoinServer()
+		logrus.Infoln(fmt.Sprintf("My tag in the database is: %v", GetMyTag()))
+		c <- true
+	}()
+	return c
 
 }
 
