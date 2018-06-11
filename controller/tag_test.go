@@ -15,8 +15,7 @@ func TestHandleMyTagMessage(t *testing.T) {
 	myTag := uint(10)
 	tag := model.Tag{Tag: myTag}
 	bytes, _ := json.Marshal(tag)
-	c := HandleMyTagMessage(bytes)
-	<-c
+	HandleMyTagMessage(bytes)
 	assert.Equal(t, myTag, GetMyTag(), "The tag set by HandleMyTagMessage should equal what we sent")
 
 }
