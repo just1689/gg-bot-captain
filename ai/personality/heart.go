@@ -10,7 +10,7 @@ func ChoosePersonality() Personality {
 	//TODO: better impl
 	//Consider conditions?
 
-	return randomPersonality()
+	return RandomPersonality()
 }
 
 func ChooseGoal(personality Personality) goal.Goal {

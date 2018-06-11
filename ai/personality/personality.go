@@ -7,7 +7,7 @@ const (
 	Wimp
 )
 
-func randomPersonality() Personality {
+func RandomPersonality() Personality {
 	//Todo: actual random impl
 	return Hunter
 }
