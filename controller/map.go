@@ -25,13 +25,8 @@ func assignTileID(list []model.Tile) {
 	}
 }
 
-func pushMap(list []model.Tile) chan bool {
-	c := make(chan bool)
-	go func(list []model.Tile) {
-		for _, item := range list {
-			mem.Push(model.TableNameTile, item)
-		}
-		c <- true
-	}(list)
-	return c
+func pushMap(list []model.Tile) {
+	for _, item := range list {
+		mem.Push(model.TableNameTile, item)
+	}
 }
