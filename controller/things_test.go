@@ -68,7 +68,6 @@ func insertTankBlocking(tag uint) {
 	myTank := model.Thing{Tag: me.Tag}
 	msg := incoming.MessageShareDynamicThings{Things: []model.Thing{myTank}}
 	bytes, _ := json.Marshal(msg)
-	signal := PersistThingsMessage(bytes)
-	<-signal
+	PersistThingsMessage(bytes)
 
 }

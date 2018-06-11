@@ -9,21 +9,15 @@ import (
 )
 
 //PersistThingsMessage puts a the things found in a []byte into the database, signalling when done
-func PersistThingsMessage(b []byte) chan bool {
-	signal := make(chan bool)
-	go func() {
-		msg, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
-		if errorBuild != nil {
-			logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
-			signal <- true
-			return
-		}
-		for _, thing := range msg.Things {
-			mem.Push(model.TableNameThing, thing)
-		}
-		signal <- true
-	}()
-	return signal
+func PersistThingsMessage(b []byte) {
+	msg, errorBuild := incoming.BuildMessageShareDynamicThingsFromString(b)
+	if errorBuild != nil {
+		logrus.Errorln(fmt.Sprintf("There was a problem decoding the post message: %s", errorBuild.Error()))
+		return
+	}
+	for _, thing := range msg.Things {
+		mem.Push(model.TableNameThing, thing)
+	}
 
 }
 
