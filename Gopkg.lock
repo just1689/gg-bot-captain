@@ -38,6 +38,12 @@
   revision = "0fb14efe8c47ae851c0034ed7a448854d3d34cf3"
 
 [[projects]]
+  name = "github.com/magiconair/properties"
+  packages = ["assert"]
+  revision = "c2353362d570a7bfa228149c62842019201cfb71"
+  version = "v1.8.0"
+
+[[projects]]
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
@@ -73,6 +79,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bb118b2edb99558320c2ff6ba0ab238f5acb3a813ff645d4f9b6af5bf55bbbd0"
+  inputs-digest = "828e87f809ec6f1957ca80b8f10fce90d94d914be71cb03d9db2c56c16a15b94"
   solver-name = "gps-cdcl"
   solver-version = 1
