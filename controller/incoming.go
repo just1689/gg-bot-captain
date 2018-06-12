@@ -39,7 +39,7 @@ func HandleIncoming(b []byte) {
 
 func routeMessage(con string, b []byte) {
 	if con == messages.ConversationShareTag {
-		<-HandleMyTagMessage(b)
+		HandleMyTagMessage(b)
 		SendMessageJoinServer()
 	} else if con == messages.ConversationListOfGames {
 		c := handleListOfGames(b)

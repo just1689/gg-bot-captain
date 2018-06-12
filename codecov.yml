@@ -1,7 +1,6 @@
 ignore:
   - "model/**"          # nothing to see here ;)
   - "mem/**"            # nothing to see here ;)
-  - "controller/**"     # nothing to see here ;)
   - "application.go"    # nothing to see here ;)
   - "util/keyboard.go"  # nothing to see here ;)
   - "util/socket.go"    # nothing to see here ;)
