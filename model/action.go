@@ -9,6 +9,6 @@ const (
 )
 
 type Action struct {
-	action    ActionLabel
-	tagTarget uint
+	Action    ActionLabel
+	TagTarget uint
 }

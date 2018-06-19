@@ -1,4 +1,4 @@
-package ai
+package planner
 
 import (
 	"github.com/just1689/gg-bot-captain/ai/goal"
