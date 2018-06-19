@@ -2,6 +2,7 @@ package ai
 
 import (
 	"github.com/just1689/gg-bot-captain/ai/personality"
+	"github.com/just1689/gg-bot-captain/ai/planner"
 	"github.com/sirupsen/logrus"
 	"time"
 )
@@ -16,7 +17,7 @@ func Schedule() (ticker chan bool) {
 			ticker <- true
 			myGoal := personality.ChooseGoal(myPersonality)
 			ticker <- true
-			plan(myGoal, myPersonality)
+			planner.Plan(myGoal, myPersonality)
 			ticker <- true
 			time.Sleep(1 * time.Second)
 		}
