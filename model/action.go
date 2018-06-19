@@ -6,6 +6,7 @@ const (
 	ActionAim      ActionLabel = iota
 	ActionMoveNear
 	ActionAttack
+	ActionRunAway
 )
 
 type Action struct {

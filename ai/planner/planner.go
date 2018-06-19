@@ -22,6 +22,10 @@ func Plan(myGoal goal.Goal, myPersonality personality.Personality) (actions []mo
 		//Pursue
 		ok = true
 	} else if myGoal.Goal == goal.Hide {
+
+		actionAttack := model.Action{Action: model.ActionRunAway}
+		actions = append(actions, actionAttack)
+
 		//Hide
 		ok = true
 	}
