@@ -92,6 +92,9 @@ func setupAI() {
 	go func() {
 		log.Println("Starting AI...:")
 		time.Sleep(5 * time.Second)
-		ai.Schedule()
+		c := ai.Schedule()
+		for b := range c {
+			log.Println("AI Tick! ", b)
+		}
 	}()
 }

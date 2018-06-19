@@ -3,7 +3,7 @@ package model
 type ActionLabel int
 
 const (
-	ActionAim      ActionLabel = iota
+	ActionAim ActionLabel = iota
 	ActionMoveNear
 	ActionAttack
 	ActionRunAway
