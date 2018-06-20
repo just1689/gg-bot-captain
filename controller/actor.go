@@ -5,17 +5,19 @@ import (
 	"log"
 )
 
-func Act(myPersonality model.Personality, goal model.Goal, actions []model.Action) {
+func Act(myPersonality model.Personality, goal model.Goal, actions []model.Action) (abortPersonality bool, abortGoal bool) {
 
 	for _, action := range actions {
 
 		if myPersonality.IsNowIrrelevant() {
 			log.Println("My personality doesn't fit. Aborting")
+			abortPersonality = true
 			return
 		}
 
 		if goal.IsSatisfied() {
 			log.Println("The goal has been satisfied. Aborting")
+			abortGoal = true
 			return
 		}
 
@@ -30,4 +32,5 @@ func Act(myPersonality model.Personality, goal model.Goal, actions []model.Actio
 		}
 
 	}
+	return
 }
