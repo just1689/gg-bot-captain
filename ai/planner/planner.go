@@ -1,14 +1,12 @@
 package planner
 
 import (
-	"github.com/just1689/gg-bot-captain/ai/goal"
 	"github.com/just1689/gg-bot-captain/model"
-	"github.com/just1689/gg-bot-captain/ai/personality"
 )
 
-func Plan(myPersonality personality.Personality, myGoal goal.Goal) (actions []model.Action, ok bool) {
+func Plan(myPersonality model.Personality, myGoal model.Goal) (actions []model.Action, ok bool) {
 	ok = false
-	if myGoal.Goal == goal.Kill {
+	if myGoal.Goal == model.Kill {
 
 		actionMove := model.Action{Action: model.ActionMoveNear, TagTarget: myGoal.Tag}
 		actions = append(actions, actionMove)
@@ -21,7 +19,7 @@ func Plan(myPersonality personality.Personality, myGoal goal.Goal) (actions []mo
 
 		//Pursue
 		ok = true
-	} else if myGoal.Goal == goal.Hide {
+	} else if myGoal.Goal == model.Hide {
 
 		actionAttack := model.Action{Action: model.ActionRunAway}
 		actions = append(actions, actionAttack)

@@ -1,4 +1,4 @@
-package goal
+package model
 
 type GoalLabel int
 
@@ -32,7 +32,7 @@ func (g Goal) IsSatisfied() bool {
 		This means it would be better for it to consider it satisfied if does not explicitly
 		implement criteria to measure that.
 
-	 */
+	*/
 	return true
 }
 

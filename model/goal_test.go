@@ -1,4 +1,4 @@
-package goal
+package model
 
 import (
 	"fmt"

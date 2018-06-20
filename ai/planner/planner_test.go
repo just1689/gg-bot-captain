@@ -19,7 +19,7 @@ func TestPlan(t *testing.T) {
 
 	setupTwoPlayers()
 
-	myPersonality := personality.Hunter
+	myPersonality := model.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
 	_, ok := Plan(myPersonality, myGoal)
 
@@ -37,7 +37,7 @@ func TestPlanActions(t *testing.T) {
 
 	setupTwoPlayers()
 
-	myPersonality := personality.Hunter
+	myPersonality := model.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
 	actions, _ := Plan(myPersonality, myGoal)
 
@@ -55,7 +55,7 @@ func TestPlanActionsForWimp(t *testing.T) {
 
 	setupTwoPlayers()
 
-	myPersonality := personality.Wimp
+	myPersonality := model.Wimp
 	myGoal := personality.ChooseGoal(myPersonality)
 	actions, _ := Plan(myPersonality, myGoal)
 
