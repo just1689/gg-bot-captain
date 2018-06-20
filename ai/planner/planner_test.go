@@ -3,6 +3,7 @@ package planner
 import (
 	"fmt"
 	"github.com/just1689/gg-bot-captain/ai/personality"
+	"github.com/just1689/gg-bot-captain/controller"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
@@ -39,9 +40,11 @@ func TestPlanActions(t *testing.T) {
 
 	myPersonality := model.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
-	actions, _ := Plan(myPersonality, myGoal)
+	myActions, _ := Plan(myPersonality, myGoal)
 
-	assert.NotEmpty(t, actions, "The list of actions planned should not be empty")
+	assert.NotEmpty(t, myActions, "The list of actions planned should not be empty")
+
+	controller.Act(myPersonality, myGoal, myActions)
 
 	if t.Failed() {
 		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", name))
@@ -57,9 +60,11 @@ func TestPlanActionsForWimp(t *testing.T) {
 
 	myPersonality := model.Wimp
 	myGoal := personality.ChooseGoal(myPersonality)
-	actions, _ := Plan(myPersonality, myGoal)
+	myActions, _ := Plan(myPersonality, myGoal)
 
-	assert.NotEmpty(t, actions, "The list of actions for a Wimp planned should not be empty")
+	assert.NotEmpty(t, myActions, "The list of actions for a Wimp planned should not be empty")
+
+	controller.Act(myPersonality, myGoal, myActions)
 
 	if t.Failed() {
 		logrus.Println(fmt.Sprintf("Testing %s failed ❌ ", name))
