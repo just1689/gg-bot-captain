@@ -3,6 +3,7 @@ package personality
 import (
 	"fmt"
 	"github.com/just1689/gg-bot-captain/ai/planner"
+	"github.com/just1689/gg-bot-captain/controller"
 	"github.com/just1689/gg-bot-captain/mem"
 	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
@@ -60,16 +61,16 @@ func TestAct(t *testing.T) {
 
 	//Test the hunters actions
 	myPersonality := model.Hunter
-	myGoal := personality.ChooseGoal(myPersonality)
+	myGoal := ChooseGoal(myPersonality)
 	myActions, ok := planner.Plan(myPersonality, myGoal)
 	assert.True(t, ok, "The planner should give the ok for TestAct")
-	Act(myPersonality, myGoal, myActions)
+	controller.Act(myPersonality, myGoal, myActions)
 
 	myPersonality = model.Wimp
-	myGoal = personality.ChooseGoal(myPersonality)
+	myGoal = ChooseGoal(myPersonality)
 	myActions, ok = planner.Plan(myPersonality, myGoal)
 	assert.True(t, ok, "The planner should give the ok for TestAct")
-	Act(myPersonality, myGoal, myActions)
+	controller.Act(myPersonality, myGoal, myActions)
 
 }
 
