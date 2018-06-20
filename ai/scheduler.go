@@ -12,18 +12,20 @@ import (
 func Schedule() (ticker chan bool) {
 	ticker = make(chan bool)
 	go func() {
+
+		logrus.Println("ai.Scheduler run...")
+		myPersonality := personality.ChoosePersonality()
+		ticker <- true
+
 		for {
-			logrus.Println("ai.Scheduler run...")
-			myPersonality := personality.ChoosePersonality()
-			ticker <- true
 			myGoal := personality.ChooseGoal(myPersonality)
 			ticker <- true
-			actions, ok := planner.Plan(myGoal, myPersonality)
+			myActions, ok := planner.Plan(myPersonality, myGoal)
 			if !ok {
 				time.Sleep(1 * time.Second)
 				continue
 			}
-			controller.Act(actions)
+			controller.Act(myPersonality, myGoal, myActions)
 			ticker <- true
 		}
 	}()

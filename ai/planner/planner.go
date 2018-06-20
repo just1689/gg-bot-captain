@@ -2,11 +2,11 @@ package planner
 
 import (
 	"github.com/just1689/gg-bot-captain/ai/goal"
-	"github.com/just1689/gg-bot-captain/ai/personality"
 	"github.com/just1689/gg-bot-captain/model"
+	"github.com/just1689/gg-bot-captain/ai/personality"
 )
 
-func Plan(myGoal goal.Goal, myPersonality personality.Personality) (actions []model.Action, ok bool) {
+func Plan(myPersonality personality.Personality, myGoal goal.Goal) (actions []model.Action, ok bool) {
 	ok = false
 	if myGoal.Goal == goal.Kill {
 

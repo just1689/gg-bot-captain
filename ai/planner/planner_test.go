@@ -21,7 +21,7 @@ func TestPlan(t *testing.T) {
 
 	myPersonality := personality.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
-	_, ok := Plan(myGoal, myPersonality)
+	_, ok := Plan(myPersonality, myGoal)
 
 	assert.True(t, ok, "The planner should return ok is true")
 
@@ -39,7 +39,7 @@ func TestPlanActions(t *testing.T) {
 
 	myPersonality := personality.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
-	actions, _ := Plan(myGoal, myPersonality)
+	actions, _ := Plan(myPersonality, myGoal)
 
 	assert.NotEmpty(t, actions, "The list of actions planned should not be empty")
 
@@ -57,7 +57,7 @@ func TestPlanActionsForWimp(t *testing.T) {
 
 	myPersonality := personality.Wimp
 	myGoal := personality.ChooseGoal(myPersonality)
-	actions, _ := Plan(myGoal, myPersonality)
+	actions, _ := Plan(myPersonality, myGoal)
 
 	assert.NotEmpty(t, actions, "The list of actions for a Wimp planned should not be empty")
 
