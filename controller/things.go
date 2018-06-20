@@ -28,3 +28,16 @@ func GetAllThings() chan model.Thing {
 	return i
 
 }
+
+func GetMeAndTarget(meTag uint, targetTag uint) (me model.Thing, target model.Thing) {
+	c := GetAllThings()
+	for item := range c {
+		if item.Tag == meTag {
+			me = item
+		}
+		if item.Tag == targetTag {
+			target = item
+		}
+	}
+	return
+}
