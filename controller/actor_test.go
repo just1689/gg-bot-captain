@@ -13,11 +13,17 @@ func TestAct(t *testing.T) {
 
 	setupTwoPlayers()
 
-	myPersonality := personality.ChoosePersonality()
+	//Test the hunters actions
+	myPersonality := model.Hunter
 	myGoal := personality.ChooseGoal(myPersonality)
 	myActions, ok := planner.Plan(myPersonality, myGoal)
 	assert.True(t, ok, "The planner should give the ok for TestAct")
+	Act(myPersonality, myGoal, myActions)
 
+	myPersonality = model.Wimp
+	myGoal = personality.ChooseGoal(myPersonality)
+	myActions, ok = planner.Plan(myPersonality, myGoal)
+	assert.True(t, ok, "The planner should give the ok for TestAct")
 	Act(myPersonality, myGoal, myActions)
 
 }
