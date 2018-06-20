@@ -4,6 +4,7 @@ import (
 	"github.com/just1689/gg-bot-captain/ai/personality"
 	"github.com/just1689/gg-bot-captain/ai/planner"
 	"github.com/just1689/gg-bot-captain/controller"
+	"github.com/just1689/gg-bot-captain/model"
 	"github.com/sirupsen/logrus"
 	"time"
 )
@@ -18,16 +19,21 @@ func Schedule() (ticker chan bool) {
 		ticker <- true
 
 		for {
-			myGoal := personality.ChooseGoal(myPersonality)
-			ticker <- true
-			myActions, ok := planner.Plan(myPersonality, myGoal)
-			if !ok {
-				time.Sleep(1 * time.Second)
-				continue
-			}
-			controller.Act(myPersonality, myGoal, myActions)
-			ticker <- true
+			scheduleTick(myPersonality, ticker)
 		}
 	}()
 	return ticker
+}
+
+func scheduleTick(myPersonality model.Personality, ticker chan bool) {
+	myGoal := personality.ChooseGoal(myPersonality)
+	ticker <- true
+	myActions, ok := planner.Plan(myPersonality, myGoal)
+	if !ok {
+		time.Sleep(1 * time.Second)
+		return
+	}
+	controller.Act(myPersonality, myGoal, myActions)
+	ticker <- true
+
 }
