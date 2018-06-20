@@ -12,7 +12,7 @@ func RandomPersonality() Personality {
 	return Hunter
 }
 
-func (p Personality) IsStillRelavant() bool {
+func (p Personality) IsNowIrrelevant() bool {
 	//Todo: decide how to choose whether or not a personality is relevant
-	return true
+	return false
 }
